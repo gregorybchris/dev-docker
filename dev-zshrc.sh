@@ -26,19 +26,6 @@ source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #  ~ ~ ~ ~ Installations ~ ~ ~ ~ #
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 
-# Miniconda
-__conda_setup="$('/home/chris/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/chris/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/chris/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/chris/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
 # Vim
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR=vim
@@ -48,6 +35,9 @@ else
     export VISUAL=vim
 fi
 
+# Miniconda
+export PATH=/home/chris/miniconda3/bin:$PATH
+
 # Haskell
 source /home/chris/.ghcup/env
 
@@ -56,7 +46,7 @@ export GOROOT=/home/chris/go
 export PATH=$GOROOT/bin:$PATH
 
 # Homebrew
-# export PATH="/home/chris/.linuxbrew/bin:$PATH"
+# export PATH=/home/chris/.linuxbrew/bin:$PATH
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Aliases ~ ~ ~ ~ #
