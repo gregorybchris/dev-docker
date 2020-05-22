@@ -1,0 +1,1 @@
+main = putStrLn "dev-docker works with Haskell!"
