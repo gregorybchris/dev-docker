@@ -18,22 +18,9 @@ RUN apt-get update && \
 # User setup
 ARG USER_NAME="chris"
 ARG USER_PASSWORD="chrisdev##"
-ARG USER_ID=1000
-RUN useradd --create-home --shell /bin/zsh $USER_NAME
-
-# RUN adduser --quiet --disabled-password --shell /bin/zsh --home /home/$USER_NAME $USER_NAME \
-#     && echo "$USER_NAME:$USER_PASSWORD" | chpasswd \
-#     && usermod -aG sudo $USER_NAME
-
-
-# RUN adduser --quiet --disabled-password --shell /bin/zsh --home /home/$USER_NAME --gecos "User" $USER_NAME \
-#     && echo "$USER_NAME:$USER_PASSWORD" | chpasswd \
-#     && usermod -aG sudo $USER_NAME
-
-    # && useradd --create-home --shell /bin/zsh $USER_NAME \
-    # && echo "${USER_NAME}:${USER_PASSWORD}" | chpasswd \
-    # && adduser $USER_NAME sudo \
-    # && usermod -aG sudo $USER_NAME
+RUN useradd --create-home --shell /bin/zsh --password $USER_PASSWORD $USER_NAME \
+    && echo "$USER_NAME:$USER_PASSWORD" | chpasswd \
+    && usermod -aG sudo $USER_NAME
 USER $USER_NAME
 
 # Install Zsh and Antigen
@@ -44,7 +31,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN curl -L git.io/antigen > .antigen.zsh
 
 # Copy Zsh settings
-COPY --chown=myuser dev-zshrc /home/$USER_NAME/.zshrc
+COPY --chown=chris dev-zshrc /home/$USER_NAME/.zshrc
 
 # Install Miniconda
 # RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -65,7 +52,7 @@ RUN git config --global alias.co checkout \
     && git config --global alias.st status
 
 ARG SOURCE_DIR="src"
-COPY --chown=myuser $SOURCE_DIR src
+COPY --chown=chris $SOURCE_DIR src
 
 
 CMD [ "zsh" ]
