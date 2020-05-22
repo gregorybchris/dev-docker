@@ -18,10 +18,15 @@ RUN apt-get update && \
 # User setup
 ARG USER_NAME="chris"
 ARG USER_PASSWORD="chrisdev##"
-RUN useradd --create-home --shell /bin/zsh --password $USER_PASSWORD $USER_NAME \
-    && echo "$USER_NAME:$USER_PASSWORD" | chpasswd \
-    && usermod -aG sudo $USER_NAME
+RUN useradd --create-home --shell /bin/zsh --groups root,sudo --password $USER_PASSWORD $USER_NAME \
+    && echo "$USER_NAME:$USER_PASSWORD" | chpasswd
 USER $USER_NAME
+
+# Set standard Git aliases
+RUN git config --global alias.co checkout \
+    && git config --global alias.br branch \
+    && git config --global alias.ci commit \
+    && git config --global alias.st status
 
 # Install Zsh and Antigen
 WORKDIR /home/$USER_NAME
@@ -31,29 +36,26 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN curl -L git.io/antigen > .antigen.zsh
 
 # Copy Zsh settings
-COPY --chown=chris dev-zshrc /home/$USER_NAME/.zshrc
+COPY --chown=chris dev-zshrc.sh /home/$USER_NAME/.zshrc
 
 # Install Miniconda
-# RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-#     && bash Miniconda3-latest-Linux-x86_64.sh -b \
-#     && rm -f Miniconda3-latest-Linux-x86_64.sh
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && bash Miniconda3-latest-Linux-x86_64.sh -b \
+    && rm -f Miniconda3-latest-Linux-x86_64.sh
 
 # Install Haskell
-# RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 sh
+
+# Install Go
+RUN wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz \
+    && tar -xvf go1.14.3.linux-amd64.tar.gz \
+    && rm -f go1.14.3.linux-amd64.tar.gz
 
 # Install Homebrew (takes ~400MB to install)
-# If using, add /home/chris/.linuxbrew/bin to PATH
 # RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-# Set standard Git aliases
-RUN git config --global alias.co checkout \
-    && git config --global alias.br branch \
-    && git config --global alias.ci commit \
-    && git config --global alias.st status
 
 ARG SOURCE_DIR="src"
 COPY --chown=chris $SOURCE_DIR src
-
 
 CMD [ "zsh" ]
 

@@ -1,12 +1,3 @@
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
-#  ~ ~ ~ ~ Default Settings  ~ ~ ~ ~ #
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
-
-# export ZSH="/home/chris/.oh-my-zsh"
-# ZSH_THEME="robbyrussell"
-# plugins=(git zsh-autosuggestions)
-# source $ZSH/oh-my-zsh.sh
-
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Antigen Setup ~ ~ ~ ~ #
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
@@ -59,6 +50,13 @@ fi
 
 # Haskell
 source /home/chris/.ghcup/env
+
+# Go
+export GOROOT=/home/chris/go
+export PATH=$GOROOT/bin:$PATH
+
+# Homebrew
+# export PATH="/home/chris/.linuxbrew/bin:$PATH"
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Aliases ~ ~ ~ ~ #
