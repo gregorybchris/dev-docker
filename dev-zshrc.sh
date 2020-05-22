@@ -1,8 +1,14 @@
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
-#  ~ ~ ~ ~ Antigen Setup ~ ~ ~ ~ #
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
+# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
+#  ~ ~ ~ ~ Setup ~ ~ ~ ~ #
+# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 
-source /home/chris/.antigen.zsh
+export USER=develop
+
+# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
+#  ~ ~ ~ ~ Zsh ~ ~ ~ ~ #
+# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
+
+source /home/$USER/.antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle autojump
@@ -31,22 +37,22 @@ if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR=vim
     export VISUAL=vim
 else
-    export EDITOR='mvim'
+    export EDITOR=mvim
     export VISUAL=vim
 fi
 
 # Miniconda
-export PATH=/home/chris/miniconda3/bin:$PATH
+export PATH=/home/$USER/miniconda3/bin:$PATH
 
 # Haskell
-source /home/chris/.ghcup/env
+source /home/$USER/.ghcup/env
 
 # Go
-export GOROOT=/home/chris/go
+export GOROOT=/home/$USER/go
 export PATH=$GOROOT/bin:$PATH
 
 # Homebrew
-# export PATH=/home/chris/.linuxbrew/bin:$PATH
+# export PATH=/home/$USER/.linuxbrew/bin:$PATH
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Aliases ~ ~ ~ ~ #
@@ -55,9 +61,6 @@ export PATH=$GOROOT/bin:$PATH
 # Zsh
 alias edit="vim ~/.zshrc"
 alias zource="source ~/.zshrc"
-
-# Python
-alias delpyc="find . -name \*.pyc -delete"
 
 # Weather
 alias wttr="curl 'wttr.in/Seattle?F5'"

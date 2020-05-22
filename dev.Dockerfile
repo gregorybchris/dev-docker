@@ -16,8 +16,8 @@ RUN apt-get update && \
     && locale-gen en_US.UTF-8
 
 # User setup
-ARG USER_NAME="chris"
-ARG USER_PASSWORD="chrisdev##"
+ARG USER_NAME=develop
+ARG USER_PASSWORD=password
 RUN useradd --create-home --shell /bin/zsh --groups root,sudo --password $USER_PASSWORD $USER_NAME \
     && echo "$USER_NAME:$USER_PASSWORD" | chpasswd
 USER $USER_NAME
@@ -36,7 +36,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN curl -L git.io/antigen > .antigen.zsh
 
 # Copy Zsh settings
-COPY --chown=chris dev-zshrc.sh /home/$USER_NAME/.zshrc
+COPY --chown=develop dev-zshrc.sh /home/$USER_NAME/.zshrc
 
 # Install Miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -54,11 +54,7 @@ RUN wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz \
 # Install Homebrew (takes ~400MB to install)
 # RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-ARG SOURCE_DIR="src"
-COPY --chown=chris $SOURCE_DIR src
+ARG SOURCE_DIR=src
+COPY --chown=develop $SOURCE_DIR src
 
 CMD [ "zsh" ]
-
-# STEPS TO RUN
-# docker build -f dev.Dockerfile -t chrisdev .
-# docker run -i -t chrisdev zsh
