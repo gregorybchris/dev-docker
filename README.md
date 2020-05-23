@@ -14,5 +14,5 @@ docker build -f dev.Dockerfile -t dev .
 docker run --name dev-container -i -t dev zsh
 
 # Test that all supported languages work
-cd src && ./run-all.sh
+zsh src/lang-check/run-all.sh
 ```
