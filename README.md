@@ -12,6 +12,7 @@ cd dev-docker
 
 ```bash
 # Create the development docker image
+# Note: this might take up to 6GB. Make sure you have enough disk space.
 docker build --file dev.Dockerfile --tag dev .
 
 # Run the image and mount the dev-docker project source for testing
