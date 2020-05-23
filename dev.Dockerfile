@@ -36,7 +36,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN curl -L git.io/antigen > .antigen.zsh
 
 # Copy Zsh settings
-COPY --chown=develop dev-zshrc.sh /home/$USER_NAME/.zshrc
+COPY --chown=develop dev-zshrc.zsh /home/$USER_NAME/.zshrc
 
 # Install Miniconda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
