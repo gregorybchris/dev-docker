@@ -2,18 +2,27 @@
 
 Docker setup for development in C, C++, Go, Haskell, JavaScript, Python, and Rust.
 
-## Steps to Run
+## How to Use
 
 ```bash
 # Pull the code
 git clone git@github.com:gregorybchris/dev-docker.git
 cd dev-docker
+```
 
-# Create and run the docker image
-docker build -f dev-base.Dockerfile -t dev-base .
-docker build -f dev.Dockerfile -t dev .
-docker run --name dev-container -i -t dev zsh
+```bash
+# Create the development docker image
+docker build --file dev.Dockerfile --tag dev .
+
+# Run the image and mount the dev-docker project source for testing
+docker run -it --mount type=bind,source="$(pwd)",target=/home/develop/src dev zsh
 
 # Test that all supported languages work
 zsh src/lang-check/check-all.sh
+```
+
+```bash
+# Create an image with a custom project mounted
+# Replace <path-to-project> with an absolute path
+docker run -it --mount type=bind,source="<path-to-project>",target=/home/develop/src dev zsh
 ```
