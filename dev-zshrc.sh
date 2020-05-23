@@ -1,14 +1,8 @@
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
-#  ~ ~ ~ ~ Setup ~ ~ ~ ~ #
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
-
-export USER=develop
-
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Zsh ~ ~ ~ ~ #
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 
-source /home/$USER/.antigen.zsh
+source $HOME/.antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle autojump
@@ -42,17 +36,20 @@ else
 fi
 
 # Miniconda
-export PATH=/home/$USER/miniconda3/bin:$PATH
+export PATH=$HOME/miniconda3/bin:$PATH
 
 # Haskell
-source /home/$USER/.ghcup/env
+source $HOME/.ghcup/env
 
 # Go
-export GOROOT=/home/$USER/go
+export GOROOT=$HOME/go
 export PATH=$GOROOT/bin:$PATH
 
+# Rust
+source $HOME/.cargo/env
+
 # Homebrew
-# export PATH=/home/$USER/.linuxbrew/bin:$PATH
+# export PATH=$HOME/.linuxbrew/bin:$PATH
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  #
 #  ~ ~ ~ ~ Aliases ~ ~ ~ ~ #

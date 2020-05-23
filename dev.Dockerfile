@@ -51,6 +51,9 @@ RUN wget https://dl.google.com/go/go1.14.3.linux-amd64.tar.gz \
     && tar -xvf go1.14.3.linux-amd64.tar.gz \
     && rm -f go1.14.3.linux-amd64.tar.gz
 
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+
 # Install Homebrew (takes ~400MB to install)
 # RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 

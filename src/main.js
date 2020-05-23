@@ -1,0 +1,1 @@
+console.log("dev-docker works with JavaScript!")
