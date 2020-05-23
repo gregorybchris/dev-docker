@@ -9,6 +9,8 @@ RUN apt-get update && \
     npm nodejs \
     # Haskell requirements
     build-essential libffi-dev libffi6 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5 \
+    # Java requirements
+    default-jre default-jdk \
     # Other
     autojump \
     # Locale

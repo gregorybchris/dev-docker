@@ -1,6 +1,6 @@
 # Dev Docker
 
-Docker setup for development in C, C++, Go, Haskell, JavaScript, Python, and Rust.
+Docker setup for development in C, C++, Go, Haskell, Java, JavaScript, Python, and Rust.
 
 ## How to Use
 
