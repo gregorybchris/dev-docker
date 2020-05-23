@@ -1,2 +1,2 @@
 if __name__ == '__main__':
-    print(f"dev-docker works with Python!")
+    print("dev-docker works with Python!")
