@@ -5,7 +5,6 @@
 source $HOME/.antigen.zsh
 antigen use oh-my-zsh
 
-antigen bundle autojump
 antigen bundle command-not-found
 antigen bundle git
 antigen bundle pip
@@ -36,17 +35,17 @@ else
 fi
 
 # Miniconda
-export PATH=$HOME/miniconda3/bin:$PATH
+# export PATH=$HOME/miniconda3/bin:$PA¡TH
 
 # Haskell
-source $HOME/.ghcup/env
+# source $HOME/.ghcup/env
 
 # Go
-export GOROOT=$HOME/go
-export PATH=$GOROOT/bin:$PATH
+# export GOROOT=$HOME/go
+# export PATH=$GOROOT/bin:$PATH
 
 # Rust
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
 
 # Homebrew
 # export PATH=$HOME/.linuxbrew/bin:$PATH
@@ -61,3 +60,36 @@ alias zource="source ~/.zshrc"
 
 # Weather
 alias wttr="curl 'wttr.in/Seattle?F5'"
+
+# Conda
+# alias lse="conda env list"
+# alias deac="conda deactivate"
+
+# function ac() {
+#     conda activate $1
+# }
+
+# function crm() {
+#     conda env remove -n $1 -y
+# }
+
+# function crac() {
+#     conda create -n $1 python=$2 -y
+#     conda activate $1
+# }
+
+# alias dk="docker"
+# alias k="kubectl"
+alias python_serve="python -m http.server 8080"
+alias timer="/usr/bin/time"
+
+# function pip() {
+#   case $1 in
+#     list)
+#       shift
+#       command pip list | less
+#       ;;
+#     *)
+#       command pip "$@";;
+#   esac
+# }
